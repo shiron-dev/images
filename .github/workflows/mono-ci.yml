@@ -1,0 +1,44 @@
+name: Monorepo CI
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      changed_dirs: ${{ steps.changed-dirs.outputs.changed_dirs }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Get changed directories
+        id: changed-dirs
+        run: |
+          CHANGED_FILES=$(git diff --name-only origin/${{ github.event.pull_request.base.ref }}..${{ github.event.pull_request.head.sha }})
+          CHANGED_DIRS=""
+          while IFS= read -r FILE; do
+            DIR=$(echo "$FILE" | cut -d/ -f1)
+            if [ -d "$DIR" ]; then
+              CHANGED_DIRS="$CHANGED_DIRS$DIR\n"
+            fi
+          done <<< "$CHANGED_FILES"
+          echo -e "$CHANGED_DIRS" | uniq | jq -Rsc 'split("\n")[0:-1]' >> input.json
+          CHANGED_DIRS=$(cat input.json release-please-config.json \
+            | jq -s -r '(.[1].packages | keys) + .[0] | .[]' \
+            | sort | uniq -d | jq -Rsc 'split("\n")[0:-1]')
+          echo "changed_dirs=$CHANGED_DIRS" >> "$GITHUB_OUTPUT"
+          cat "$GITHUB_OUTPUT"
+  process-changes:
+    needs: detect-changes
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        changed_dir: ${{ fromJson(needs.detect-changes.outputs.changed_dirs) }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Execute process
+        run: |
+          echo "Changed directory: ${{ matrix.changed_dir }}"
