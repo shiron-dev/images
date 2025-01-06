@@ -1,0 +1,64 @@
+name: Main CI
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  all-status-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs:
+      - dockerfile-lint
+      - yaml-lint
+      - shell-lint
+      - action-lint
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check all-status-check
+        run: |
+          diff \
+            <(yq ".jobs | del(.all-status-check) | keys.[]" .github/workflows/ci.yml) \
+            <(yq ".jobs.all-status-check.needs.[]" .github/workflows/ci.yml)
+  dockerfile-lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Dockerfile lint
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: "Dockerfile.*"
+          recursive: true
+      - name: Dockerfile lint
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          recursive: true
+  yaml-lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: reviewdog/action-yamllint@v1.20.0
+        with:
+          level: warning
+          yamllint_flags: "-c .yamllint ."
+  shell-lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: reviewdog/action-shellcheck@v1.28.0
+        with:
+          level: warning
+      - uses: reviewdog/action-shfmt@v1.0.2
+        with:
+          level: warning
+          fail_on_error: true
+  action-lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: reviewdog/action-actionlint@v1.60.0
+        with:
+          level: warning
