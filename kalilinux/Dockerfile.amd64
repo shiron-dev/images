@@ -1,4 +1,4 @@
-FROM kalilinux/kali-rolling:amd64@sha256:4c516126b5ef76dbf1423366853862c0d885e3d3d8f02fd0ab966cce1c6e11ab
+FROM kalilinux/kali-rolling:amd64@sha256:c1c7d84e57939389a95cc385879c7e5231e77e296b40436bb06748972e4bb615
 
 # Install the tools
 RUN apt-get update \
