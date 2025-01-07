@@ -6,6 +6,7 @@ on:
 jobs:
   detect-changes:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     outputs:
       changed_dirs: ${{ steps.changed-dirs.outputs.changed_dirs }}
     steps:
@@ -32,6 +33,7 @@ jobs:
   docker-build:
     needs: detect-changes
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     strategy:
       matrix:
         changed_dir: ${{ fromJson(needs.detect-changes.outputs.changed_dirs) }}
