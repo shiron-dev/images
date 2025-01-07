@@ -43,17 +43,4 @@ jobs:
       - uses: docker/setup-qemu-action@v3
       - uses: docker/setup-buildx-action@v3
       - name: Build Docker images
-        run: |
-          PARALLEL_JOBS=10
-
-          find . -maxdepth 1 -name "Dockerfile.*" -print0 | parallel -0 -j "$PARALLEL_JOBS" sh '
-              dockerfile="{}"
-              dirname=$(dirname "$dockerfile")
-              build_context="$dirname"
-
-              echo "Building image: from $dockerfile"
-              docker buildx build -f "$dockerfile" "$build_context"
-              if [ $? -ne 0 ]; then
-                  echo "Error building image: from $dockerfile" >&2
-              fi
-          '
+        run: ../scripts/build_parallel.sh
