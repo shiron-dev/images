@@ -54,7 +54,7 @@ jobs:
   docker-build:
     needs: docker
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 360
     strategy:
       matrix:
         dockerfile: ${{ fromJson(needs.docker.outputs.dockerfiles) }}
