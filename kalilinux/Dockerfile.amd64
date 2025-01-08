@@ -2,5 +2,5 @@ FROM kalilinux/kali-rolling:amd64@sha256:c1c7d84e57939389a95cc385879c7e5231e77e2
 
 # Install the tools
 RUN apt-get update \
-  && apt-get install -y --no-install-recommends kali-linux-core==2025.1.2 kali-linux-default==2025.1.2 kali-tools-web==2025.1.2 \
+  && apt-get install -y --no-install-recommends kali-linux-core=2025.1.2 kali-linux-default=2025.1.2 kali-tools-web=2025.1.2 \
   && rm -rf /var/lib/apt/lists/*
