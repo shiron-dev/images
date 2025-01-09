@@ -1,7 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "github>shiron-dev/renovate-config"
+    "github>shiron-dev/renovate-config",
+    ":semanticCommits",
+    "docker:pinDigests"
   ],
   "customManagers": [
     {
@@ -24,7 +26,14 @@
       "groupName": "kali-linux packages",
       "matchPackageNames": [
         "/^kali_rolling//"
-      ]
+      ],
+      "semanticCommitType": "fix"
+    },
+    {
+      "matchDatasources": [
+        "docker"
+      ],
+      "semanticCommitType": "fix"
     }
   ]
 }
