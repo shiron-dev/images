@@ -41,6 +41,7 @@ jobs:
       - uses: reviewdog/action-yamllint@1dca3ad811867be18fbe293a9818d715a6c2cd46 # v1.20.0
         with:
           level: warning
+          fail_level: warning
           yamllint_flags: "-c .yamllint ."
   shell-lint:
     runs-on: ubuntu-latest
@@ -50,9 +51,11 @@ jobs:
       - uses: reviewdog/action-shellcheck@6e0e63d1750d02d761b3df0f2c5ba9f9ac4a9ed7 # v1.29.0
         with:
           level: warning
+          fail_level: warning
       - uses: reviewdog/action-shfmt@f59386f08bd9a24ac1a746e69f026ddc2ed06710 # v1.0.2
         with:
           level: warning
+          fail_on_error: true
   action-lint:
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -61,3 +64,4 @@ jobs:
       - uses: reviewdog/action-actionlint@f3dcc52bc6039e5d736486952379dce3e869e8a2 # v1.63.0
         with:
           level: warning
+          fail_level: warning
