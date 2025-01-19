@@ -24,12 +24,12 @@
       ],
       "separateMajorMinor": false,
       "groupName": "kali-linux",
-      "matchPackagePatterns": [
-        "/^kali_rolling//",
-        "kalilinux/kali-rolling"
-      ],
       "semanticCommitType": "fix",
-      "automerge": true
+      "automerge": true,
+      "matchPackageNames": [
+        "//^kali_rolling///",
+        "/kalilinux/kali-rolling/"
+      ]
     },
     {
       "matchDatasources": [
