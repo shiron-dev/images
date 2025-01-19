@@ -23,11 +23,13 @@
         "repology"
       ],
       "separateMajorMinor": false,
-      "groupName": "kali-linux packages",
-      "matchPackageNames": [
-        "/^kali_rolling//"
+      "groupName": "kali-linux",
+      "matchPackagePatterns": [
+        "/^kali_rolling//",
+        "kalilinux/kali-rolling"
       ],
-      "semanticCommitType": "fix"
+      "semanticCommitType": "fix",
+      "automerge": true
     },
     {
       "matchDatasources": [
