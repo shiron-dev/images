@@ -165,5 +165,6 @@ jobs:
             type=raw,value=latest
       - name: Create manifest list and push
         run: |
+          # shellcheck disable=SC2046
           docker buildx imagetools create "$(echo "$DOCKER_METADATA_OUTPUT_JSON" | jq -cr '.tags | map("-t " + .) | join(" ")')" \
-            "$(printf 'ghcr.io/${{ github.repository_owner }}/${{ matrix.kv.key }}@%s ' "$(echo '${{ toJSON(matrix.kv.values) }}' | jq -r '.[]')")"
+            "$(printf 'ghcr.io/${{ github.repository_owner }}/${{ matrix.kv.key }}@%s ' $(echo '${{ toJSON(matrix.kv.values) }}' | jq -r '.[]'))"
