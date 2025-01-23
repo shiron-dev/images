@@ -96,6 +96,7 @@ jobs:
         uses: docker/build-push-action@67a2d409c0a876cbe6b11854e3e25193efe4e62d # v6
         id: build
         with:
+          provenance: false
           context: ${{ matrix.kv.key }}
           platforms: ${{ steps.vars.outputs.platform }}
           file: "${{ matrix.kv.key }}/${{ matrix.kv.value }}"
