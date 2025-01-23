@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.4](https://github.com/shiron-dev/images/compare/kali-linux-v1.0.3...kali-linux-v1.0.4) (2025-01-23)
+
+
+### Bug Fixes
+
+* **deps:** update kalilinux/kali-rolling:arm64 docker digest to 26e61b1 ([#57](https://github.com/shiron-dev/images/issues/57)) ([958d386](https://github.com/shiron-dev/images/commit/958d38623fa199f34fb73b7803c3ef22c803b44b))
+
 ## [1.0.3](https://github.com/shiron-dev/images/compare/kali-linux-v1.0.2...kali-linux-v1.0.3) (2025-01-23)
 
 
