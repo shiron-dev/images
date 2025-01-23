@@ -19,16 +19,13 @@
   ],
   "packageRules": [
     {
-      "matchDatasources": [
-        "repology"
-      ],
       "separateMajorMinor": false,
       "groupName": "kali-linux",
       "semanticCommitType": "fix",
       "automerge": true,
       "matchPackageNames": [
-        "//^kali_rolling///",
-        "/kalilinux/kali-rolling/"
+        "kali_rolling/**",
+        "kalilinux/kali-rolling"
       ]
     },
     {
