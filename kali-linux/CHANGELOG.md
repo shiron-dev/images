@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/shiron-dev/images/compare/kali-linux-v1.0.2...kali-linux-v1.0.3) (2025-01-23)
+
+
+### Bug Fixes
+
+* **deps:** update kalilinux/kali-rolling:amd64 docker digest to a8bd950 ([#44](https://github.com/shiron-dev/images/issues/44)) ([b108029](https://github.com/shiron-dev/images/commit/b10802956b250bac269350cae17c800fcb9d1b3f))
+
 ## [1.0.2](https://github.com/shiron-dev/images/compare/kali-linux-v1.0.1...kali-linux-v1.0.2) (2025-01-23)
 
 
