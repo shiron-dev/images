@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/shiron-dev/images/compare/kali-linux-v1.0.1...kali-linux-v1.0.2) (2025-01-23)
+
+
+### Bug Fixes
+
+* **deps:** update kalilinux/kali-rolling:armhf docker digest to b5a9bd2 ([#46](https://github.com/shiron-dev/images/issues/46)) ([2c640f3](https://github.com/shiron-dev/images/commit/2c640f3e2b9859f4aa3d6168c9c2787f118ce087))
+
 ## [1.0.1](https://github.com/shiron-dev/images/compare/kali-linux-v1.0.0...kali-linux-v1.0.1) (2025-01-23)
 
 
