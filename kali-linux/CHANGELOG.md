@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.5](https://github.com/shiron-dev/images/compare/kali-linux-v1.0.4...kali-linux-v1.0.5) (2025-11-11)
+
+
+### Bug Fixes
+
+* **deps:** update kali-linux ([#68](https://github.com/shiron-dev/images/issues/68)) ([235437b](https://github.com/shiron-dev/images/commit/235437b7991da8d82fe9e25a13a5ebd6366d8001))
+
 ## [1.0.4](https://github.com/shiron-dev/images/compare/kali-linux-v1.0.3...kali-linux-v1.0.4) (2025-01-23)
 
 
