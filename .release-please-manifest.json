@@ -1,3 +1,4 @@
 {
-  "kali-linux": "1.0.5"
+  "kali-linux": "1.0.5",
+  "cloudflared": "1.0.5"
 }
