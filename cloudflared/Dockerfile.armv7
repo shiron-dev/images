@@ -10,15 +10,10 @@ ENV GO111MODULE=on \
 
 WORKDIR /go/src/github.com/cloudflare/
 
-# clone the repository and checkout the specified tag
-RUN git clone https://github.com/cloudflare/cloudflared.git
-
-WORKDIR /go/src/github.com/cloudflare/cloudflared/
-
-RUN git checkout "${GIT_TAG}"
-
-# compile cloudflared
-RUN GOOS=linux GOARCH=arm GOARM=7 make cloudflared
+# clone the repository, checkout the specified tag, and compile cloudflared
+RUN git clone https://github.com/cloudflare/cloudflared.git && \
+  git -C cloudflared checkout "${GIT_TAG}" && \
+  GOOS=linux GOARCH=arm GOARM=7 make -C cloudflared cloudflared
 
 # use a distroless base image with glibc
 FROM gcr.io/distroless/base-debian12:nonroot
