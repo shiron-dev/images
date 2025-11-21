@@ -1,11 +1,16 @@
 name: release
+
 on:
   push:
     branches:
       - main
+
 permissions:
   contents: write
   pull-requests: write
+  id-token: write
+  packages: write
+
 jobs:
   release-please:
     runs-on: ubuntu-latest
@@ -20,6 +25,7 @@ jobs:
       - name: Release please
         uses: googleapis/release-please-action@16a9c90856f42705d54a6fda1823352bdc62cf38 # v4.4.0
         id: release
+
   release:
     needs: release-please
     runs-on: ubuntu-latest
@@ -45,6 +51,7 @@ jobs:
           matrix-key: ${{ matrix.package }}
           outputs: |-
             dockerfiles: ${{ steps.get-dockerfiles.outputs.dockerfiles }}
+
   release-read:
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -60,6 +67,7 @@ jobs:
         id: vars
         run: |
           echo "result=$(echo '${{ steps.read.outputs.result }}' | jq -c '.[] | [.key as $k | .value.dockerfiles[] | {key: $k, value: .}]')" >> "$GITHUB_OUTPUT"
+
   docker-build:
     needs: release-read
     runs-on: ${{ contains(matrix.kv.value, 'arm') && 'ubuntu-24.04-arm' || 'ubuntu-24.04' }}
@@ -111,6 +119,7 @@ jobs:
           outputs: |-
             dockerfile: ${{ matrix.kv.value }}
             digest: ${{ steps.build.outputs.digest }}
+
   docker-build-read:
     needs: docker-build
     runs-on: ubuntu-latest
@@ -127,6 +136,7 @@ jobs:
         run: |
           echo '${{ steps.read.outputs.result }}'
           echo "result=$(echo '${{ steps.read.outputs.result }}' | jq -c '[{key: "kali-linux", values: (map(.value.digest))}]')" >> "$GITHUB_OUTPUT"
+
   docker-merge:
     needs:
       - docker-build-read
