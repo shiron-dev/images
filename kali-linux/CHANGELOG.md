@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.0.8](https://github.com/shiron-dev/images/compare/kali-linux-v1.0.7...kali-linux-v1.0.8) (2025-11-25)
+
+
+### Bug Fixes
+
+* **deps:** update kali-linux ([#68](https://github.com/shiron-dev/images/issues/68)) ([235437b](https://github.com/shiron-dev/images/commit/235437b7991da8d82fe9e25a13a5ebd6366d8001))
+* **deps:** update kali-linux ([#81](https://github.com/shiron-dev/images/issues/81)) ([dc8a1ba](https://github.com/shiron-dev/images/commit/dc8a1ba135196d6b6dba6fa42670bce3443e2bf0))
+* **deps:** update kali-linux ([#94](https://github.com/shiron-dev/images/issues/94)) ([508cc50](https://github.com/shiron-dev/images/commit/508cc5048026b8ae126e58c172a00d520247f257))
+* **deps:** update kalilinux/kali-rolling:amd64 docker digest to a8bd950 ([#44](https://github.com/shiron-dev/images/issues/44)) ([b108029](https://github.com/shiron-dev/images/commit/b10802956b250bac269350cae17c800fcb9d1b3f))
+* **deps:** update kalilinux/kali-rolling:arm64 docker digest to 26e61b1 ([#57](https://github.com/shiron-dev/images/issues/57)) ([958d386](https://github.com/shiron-dev/images/commit/958d38623fa199f34fb73b7803c3ef22c803b44b))
+* **deps:** update kalilinux/kali-rolling:armhf docker digest to b5a9bd2 ([#46](https://github.com/shiron-dev/images/issues/46)) ([2c640f3](https://github.com/shiron-dev/images/commit/2c640f3e2b9859f4aa3d6168c9c2787f118ce087))
+* **deps:** update kalilinux/kali-rolling:i386 docker digest to 3fc1384 ([#47](https://github.com/shiron-dev/images/issues/47)) ([bf925ce](https://github.com/shiron-dev/images/commit/bf925ce853630a648dab3f6cf2f71cd0122326f6))
+* **kali-linux:** rm armel ([#38](https://github.com/shiron-dev/images/issues/38)) ([8939be3](https://github.com/shiron-dev/images/commit/8939be3cb95a7ee376f018b66575e759e2b4978d))
+
 ## [1.0.6](https://github.com/shiron-dev/images/compare/kali-linux-v1.0.5...kali-linux-v1.0.6) (2025-11-25)
 
 
