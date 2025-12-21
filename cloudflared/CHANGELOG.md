@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/shiron-dev/images/compare/cloudflared-v1.2.0...cloudflared-v1.2.1) (2025-12-21)
+
+
+### Bug Fixes
+
+* **deps:** update golang docker tag to v1.25.5 ([#105](https://github.com/shiron-dev/images/issues/105)) ([45fa005](https://github.com/shiron-dev/images/commit/45fa005a356546c8d13f0367d6c72e255ece7635))
+
 ## [1.2.0](https://github.com/shiron-dev/images/compare/cloudflared-v1.1.1...cloudflared-v1.2.0) (2025-11-25)
 
 
