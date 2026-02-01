@@ -1,4 +1,4 @@
-FROM kalilinux/kali-rolling:i386@sha256:096270d7ab3cefe7656f5ee84b74ef552d0034488323c0adbdad7a047feb52e5
+FROM kalilinux/kali-rolling:i386@sha256:4aa9b8826949a574dd8dd1758ddb02eb816c832ecd4f31ab49a1429e33af867c
 
 # Install the tools
 # renovate: datasource=repology depName=kali_rolling/kali-meta versioning=loose
