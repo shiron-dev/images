@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/shiron-dev/images/compare/discord-webhook-v1.0.1...discord-webhook-v1.0.2) (2026-02-21)
+
+
+### Bug Fixes
+
+* add .gitignore and .dockerignore for discord-webhook package ([#144](https://github.com/shiron-dev/images/issues/144)) ([19f3897](https://github.com/shiron-dev/images/commit/19f3897b832bc974ae48ce5522b732cd38af1756))
+
 ## [1.0.1](https://github.com/shiron-dev/images/compare/discord-webhook-v1.0.0...discord-webhook-v1.0.1) (2026-02-21)
 
 
