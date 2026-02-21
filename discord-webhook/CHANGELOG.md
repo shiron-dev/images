@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/shiron-dev/images/compare/discord-webhook-v1.0.0...discord-webhook-v1.0.1) (2026-02-21)
+
+
+### Bug Fixes
+
+* **discord-webhook:** update error message for missing environment variables ([#142](https://github.com/shiron-dev/images/issues/142)) ([9249467](https://github.com/shiron-dev/images/commit/92494670ccdbd034d860e705b04e570f401f7d1d))
+
 ## 1.0.0 (2026-02-21)
 
 
