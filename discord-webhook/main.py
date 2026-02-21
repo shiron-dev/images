@@ -88,4 +88,4 @@ if DISCORD_BOT_TOKEN and WEBHOOK_URLS:
     client.run(DISCORD_BOT_TOKEN)
 else:
     print("エラー: DISCORD_BOT_TOKEN または WEBHOOK_URLS が設定されていません。")
-    print("環境変数を設定するか、コード内で直接値を設定してください。")
+    print("環境変数を設定してください。")
