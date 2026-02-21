@@ -11,7 +11,7 @@ jobs:
       changed_dirs: ${{ steps.changed-dirs.outputs.changed_dirs }}
       changed: ${{ steps.changed-dirs.outputs.changed }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Get changed directories
@@ -48,14 +48,14 @@ jobs:
         working-directory: ${{ matrix.changed_dir }}
     if: ${{ needs.detect-changes.outputs.changed == 'true' }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Get Dockerfiles
         id: get-dockerfiles
         run: |
-          DOCKERFILES=$(find . -maxdepth 1 -name "Dockerfile.*" | sort | jq -Rsc 'split("\n")[0:-1]')
+          DOCKERFILES=$(find . -maxdepth 1 \( -name "Dockerfile" -o -name "Dockerfile.*" \) | sort | jq -Rsc 'split("\n")[0:-1]')
           echo "dockerfiles=$DOCKERFILES" >> "$GITHUB_OUTPUT"
           cat "$GITHUB_OUTPUT"
-      - uses: shiron-dev/actions/matrix-output-write@eebb6216252466a58fb3aeeb2007cf8c43be1418 # v1.2.1
+      - uses: shiron-dev/actions/matrix-output-write@9e2029b6bf55740748a5eace94dc93d97a1496ba # v1.5.2
         with:
           matrix-step-name: release
           matrix-key: ${{ matrix.changed_dir }}
@@ -68,7 +68,7 @@ jobs:
     outputs:
       result: ${{ steps.vars.outputs.result }}
     steps:
-      - uses: shiron-dev/actions/matrix-output-read@eebb6216252466a58fb3aeeb2007cf8c43be1418 # v1.2.1
+      - uses: shiron-dev/actions/matrix-output-read@9e2029b6bf55740748a5eace94dc93d97a1496ba # v1.5.2
         id: read
         with:
           matrix-step-name: release
@@ -85,15 +85,15 @@ jobs:
         kv: ${{ fromJson(needs.docker-read.outputs.result) }}
     name: docker-build ${{ matrix.kv.key }} (${{ matrix.kv.value }})
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Set outputs
         id: vars
         run: |
           echo "platform=$(./scripts/get_platform.sh ${{ matrix.kv.key }}/${{ matrix.kv.value }})" >> "$GITHUB_OUTPUT"
-      - uses: docker/setup-qemu-action@29109295f81e9208d7d86ff1c6c12d2833863392 #v3.6.0
-      - uses: docker/setup-buildx-action@b5ca514318bd6ebac0fb2aedd5d36ec1b5c232a2 # v3.10.0
+      - uses: docker/setup-qemu-action@c7c53464625b32c7a7e944ae62b3e17d2b600130 # v3.7.0
+      - uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3.12.0
       - name: Build
-        uses: docker/build-push-action@471d1dc4e07e5cdedd4c2171150001c434f0b7a4 # v6.15.0
+        uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6.19.2
         id: build
         with:
           context: ${{ matrix.kv.key }}

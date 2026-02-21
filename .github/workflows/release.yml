@@ -1,11 +1,16 @@
 name: release
+
 on:
   push:
     branches:
       - main
+
 permissions:
   contents: write
   pull-requests: write
+  id-token: write
+  packages: write
+
 jobs:
   release-please:
     runs-on: ubuntu-latest
@@ -14,12 +19,13 @@ jobs:
       paths_released: ${{ steps.release.outputs.paths_released }}
       result: ${{ toJSON(steps.release.outputs) }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Release please
-        uses: googleapis/release-please-action@a02a34c4d625f9be7cb89156071d8567266a2445 # v4.2.0
+        uses: googleapis/release-please-action@16a9c90856f42705d54a6fda1823352bdc62cf38 # v4.4.0
         id: release
+
   release:
     needs: release-please
     runs-on: ubuntu-latest
@@ -32,19 +38,20 @@ jobs:
         working-directory: ${{ matrix.package }}
     if: ${{ needs.release-please.outputs.paths_released != '[]' }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Get Dockerfiles
         id: get-dockerfiles
         run: |
-          DOCKERFILES=$(find . -maxdepth 1 -name "Dockerfile.*" | sort | jq -Rsc 'split("\n")[0:-1]')
+          DOCKERFILES=$(find . -maxdepth 1 \( -name "Dockerfile" -o -name "Dockerfile.*" \) | sort | jq -Rsc 'split("\n")[0:-1]')
           echo "dockerfiles=$DOCKERFILES" >> "$GITHUB_OUTPUT"
           cat "$GITHUB_OUTPUT"
-      - uses: shiron-dev/actions/matrix-output-write@eebb6216252466a58fb3aeeb2007cf8c43be1418 # v1.2.1
+      - uses: shiron-dev/actions/matrix-output-write@9e2029b6bf55740748a5eace94dc93d97a1496ba # v1.5.2
         with:
           matrix-step-name: release
           matrix-key: ${{ matrix.package }}
           outputs: |-
             dockerfiles: ${{ steps.get-dockerfiles.outputs.dockerfiles }}
+
   release-read:
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -52,14 +59,15 @@ jobs:
     outputs:
       result: ${{ steps.vars.outputs.result }}
     steps:
-      - uses: shiron-dev/actions/matrix-output-read@eebb6216252466a58fb3aeeb2007cf8c43be1418 # v1.2.1
+      - uses: shiron-dev/actions/matrix-output-read@9e2029b6bf55740748a5eace94dc93d97a1496ba # v1.5.2
         id: read
         with:
           matrix-step-name: release
       - name: Check outputs
         id: vars
         run: |
-          echo "result=$(echo '${{ steps.read.outputs.result }}' | jq -c '.[] | [.key as $k | .value.dockerfiles[] | {key: $k, value: .}]')" >> "$GITHUB_OUTPUT"
+          echo "result=$(echo '${{ steps.read.outputs.result }}' | jq -c '[.[] | .key as $k | .value.dockerfiles[] | {key: $k, value: .}]')" >> "$GITHUB_OUTPUT"
+
   docker-build:
     needs: release-read
     runs-on: ${{ contains(matrix.kv.value, 'arm') && 'ubuntu-24.04-arm' || 'ubuntu-24.04' }}
@@ -69,7 +77,7 @@ jobs:
         kv: ${{ fromJson(needs.release-read.outputs.result) }}
     name: docker-build ${{ matrix.kv.key }} (${{ matrix.kv.value }})
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Set outputs
         id: vars
         run: |
@@ -80,20 +88,20 @@ jobs:
           } >> "$GITHUB_OUTPUT"
       - name: Docker meta
         id: meta
-        uses: docker/metadata-action@902fa8ec7d6ecbf8d84d538b9b233a880e428804 # v5.7.0
+        uses: docker/metadata-action@c299e40c65443455700f0fdfc63efafe5b349051 # v5.10.0
         with:
           images: |
             ${{ steps.vars.outputs.ghcr_repo }}
-      - uses: docker/login-action@74a5d142397b4f367a81961eba4e8cd7edddf772 # v3.4.0
+      - uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3.7.0
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GH_PAT }}
-      - uses: docker/setup-qemu-action@29109295f81e9208d7d86ff1c6c12d2833863392 #v3.6.0
-      - uses: docker/setup-buildx-action@b5ca514318bd6ebac0fb2aedd5d36ec1b5c232a2 # v3.10.0
+      - uses: docker/setup-qemu-action@c7c53464625b32c7a7e944ae62b3e17d2b600130 # v3.7.0
+      - uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3.12.0
       - run: echo "${{ steps.vars.outputs.platform }}"
       - name: Build
-        uses: docker/build-push-action@471d1dc4e07e5cdedd4c2171150001c434f0b7a4 # v6.15.0
+        uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6.19.2
         id: build
         with:
           provenance: false
@@ -104,13 +112,14 @@ jobs:
       # - id: build
       #   run: |
       #     echo "digest=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)" >> "$GITHUB_OUTPUT"
-      - uses: shiron-dev/actions/matrix-output-write@eebb6216252466a58fb3aeeb2007cf8c43be1418 # v1.2.1
+      - uses: shiron-dev/actions/matrix-output-write@9e2029b6bf55740748a5eace94dc93d97a1496ba # v1.5.2
         with:
           matrix-step-name: docker-build
           matrix-key: ${{ matrix.kv.key }}
           outputs: |-
             dockerfile: ${{ matrix.kv.value }}
             digest: ${{ steps.build.outputs.digest }}
+
   docker-build-read:
     needs: docker-build
     runs-on: ubuntu-latest
@@ -118,7 +127,7 @@ jobs:
     outputs:
       result: ${{ steps.vars.outputs.result }}
     steps:
-      - uses: shiron-dev/actions/matrix-output-read@eebb6216252466a58fb3aeeb2007cf8c43be1418 # v1.2.1
+      - uses: shiron-dev/actions/matrix-output-read@9e2029b6bf55740748a5eace94dc93d97a1496ba # v1.5.2
         id: read
         with:
           matrix-step-name: docker-build
@@ -127,6 +136,7 @@ jobs:
         run: |
           echo '${{ steps.read.outputs.result }}'
           echo "result=$(echo '${{ steps.read.outputs.result }}' | jq -c '[{key: "kali-linux", values: (map(.value.digest))}]')" >> "$GITHUB_OUTPUT"
+
   docker-merge:
     needs:
       - docker-build-read
@@ -147,15 +157,15 @@ jobs:
           echo '${{ matrix.kv }}'
           echo '${{ matrix.kv.key }}'
           echo '${{ toJSON(matrix.kv.values) }}'
-      - uses: docker/login-action@74a5d142397b4f367a81961eba4e8cd7edddf772 # v3.4.0
+      - uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3.7.0
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GH_PAT }}
-      - uses: docker/setup-buildx-action@b5ca514318bd6ebac0fb2aedd5d36ec1b5c232a2 # v3.10.0
+      - uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3.12.0
       - name: Docker meta
         id: meta
-        uses: docker/metadata-action@902fa8ec7d6ecbf8d84d538b9b233a880e428804 # v5.7.0
+        uses: docker/metadata-action@c299e40c65443455700f0fdfc63efafe5b349051 # v5.10.0
         with:
           images: ghcr.io/${{ github.repository_owner }}/${{ matrix.kv.key }}
           tags: |

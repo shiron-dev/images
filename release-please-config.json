@@ -4,6 +4,14 @@
     "kali-linux": {
       "release-type": "simple",
       "package-name": "kali-linux"
+    },
+    "cloudflared": {
+      "release-type": "simple",
+      "package-name": "cloudflared"
+    },
+    "discord-webhook": {
+      "release-type": "simple",
+      "package-name": "discord-webhook"
     }
   }
 }

@@ -1,8 +1,8 @@
-FROM kalilinux/kali-rolling:arm64@sha256:26e61b1b149ced2f5898e109ddff2cdfd93ca6e7d1438b81e5c83ca97ed90018
+FROM kalilinux/kali-rolling:arm64@sha256:c71d896670ce6931be113d355b9c4713529f681b9108c43c92aa119560b71fc9
 
 # Install the tools
 # renovate: datasource=repology depName=kali_rolling/kali-meta versioning=loose
-ENV KALI_META_VERSION=2025.1.4
+ENV KALI_META_VERSION=2025.4.8
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends kali-linux-core=${KALI_META_VERSION} kali-linux-default=${KALI_META_VERSION} kali-tools-web=${KALI_META_VERSION} \

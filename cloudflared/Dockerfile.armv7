@@ -1,0 +1,34 @@
+# use a builder image for building cloudflare
+ARG GIT_TAG=2025.11.1
+FROM golang:1.26.0@sha256:c83e68f3ebb6943a2904fa66348867d108119890a2c6a2e6f07b38d0eb6c25c5 AS builder
+ARG GIT_TAG
+ENV GO111MODULE=on \
+  CGO_ENABLED=0 \
+  # the CONTAINER_BUILD envvar is used set github.com/cloudflare/cloudflared/metrics.Runtime=virtual
+  # which changes how cloudflared binds the metrics server
+  CONTAINER_BUILD=1
+
+WORKDIR /go/src/github.com/cloudflare/
+
+# clone the repository, checkout the specified tag, and compile cloudflared
+RUN git clone https://github.com/cloudflare/cloudflared.git && \
+  git -C cloudflared checkout "${GIT_TAG}" && \
+  GOOS=linux GOARCH=arm GOARM=7 make -C cloudflared cloudflared
+
+# use a distroless base image with glibc
+FROM gcr.io/distroless/base-debian12:nonroot@sha256:8b9f2e503e55aff85b79d6b22c7a63a65170e8698ae80de680e3f5ea600977bf
+
+LABEL org.opencontainers.image.source="https://github.com/cloudflare/cloudflared"
+
+# copy our compiled binary
+COPY --from=builder --chown=nonroot /go/src/github.com/cloudflare/cloudflared/cloudflared /usr/local/bin/
+
+# run as nonroot user
+# We need to use numeric user id's because Kubernetes doesn't support strings:
+# https://github.com/kubernetes/kubernetes/blob/v1.33.2/pkg/kubelet/kuberuntime/security_context_others.go#L49
+# The `nonroot` user maps to `65532`, from: https://github.com/GoogleContainerTools/distroless/blob/main/common/variables.bzl#L18
+USER 65532:65532
+
+# command / entrypoint of container
+ENTRYPOINT ["cloudflared", "--no-autoupdate"]
+CMD ["version"]
