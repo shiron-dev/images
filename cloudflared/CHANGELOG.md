@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.2.1](https://github.com/shiron-dev/images/compare/cloudflared-v1.2.0...cloudflared-v1.2.1) (2026-02-21)
+
+
+### Bug Fixes
+
+* **deps:** update gcr.io/distroless/base-debian12:nonroot docker digest to 8b9f2e5 ([#103](https://github.com/shiron-dev/images/issues/103)) ([a30b903](https://github.com/shiron-dev/images/commit/a30b903054ac0ef5cb364508dc701407cd4a625f))
+* **deps:** update golang docker tag to v1.25.5 ([#105](https://github.com/shiron-dev/images/issues/105)) ([45fa005](https://github.com/shiron-dev/images/commit/45fa005a356546c8d13f0367d6c72e255ece7635))
+* **deps:** update golang docker tag to v1.25.6 ([#116](https://github.com/shiron-dev/images/issues/116)) ([19fdd2e](https://github.com/shiron-dev/images/commit/19fdd2e157c5de99aa3c1c5115fa28b83207a6d8))
+* **deps:** update golang docker tag to v1.25.7 ([#122](https://github.com/shiron-dev/images/issues/122)) ([d78ba22](https://github.com/shiron-dev/images/commit/d78ba22bb1ff71d790e5bc6278fd4bd28860e904))
+* **deps:** update golang docker tag to v1.26.0 ([#126](https://github.com/shiron-dev/images/issues/126)) ([3b0de5c](https://github.com/shiron-dev/images/commit/3b0de5c633b6ebbb5a35b96cd87a2127b18fe1bc))
+
 ## [1.2.0](https://github.com/shiron-dev/images/compare/cloudflared-v1.1.1...cloudflared-v1.2.0) (2025-11-25)
 
 
