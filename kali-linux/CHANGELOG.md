@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.11](https://github.com/shiron-dev/images/compare/kali-linux-v1.0.10...kali-linux-v1.0.11) (2026-02-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency kali_rolling/kali-meta to v2026 ([#140](https://github.com/shiron-dev/images/issues/140)) ([e0ec971](https://github.com/shiron-dev/images/commit/e0ec971ff1931fe4adda3f6574a92088516dd6df))
+
 ## [1.0.10](https://github.com/shiron-dev/images/compare/kali-linux-v1.0.9...kali-linux-v1.0.10) (2026-02-21)
 
 
