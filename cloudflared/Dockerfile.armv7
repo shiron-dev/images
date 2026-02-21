@@ -16,7 +16,7 @@ RUN git clone https://github.com/cloudflare/cloudflared.git && \
   GOOS=linux GOARCH=arm GOARM=7 make -C cloudflared cloudflared
 
 # use a distroless base image with glibc
-FROM gcr.io/distroless/base-debian12:nonroot@sha256:10136f394cbc891efa9f20974a48843f21a6b3cbde55b1778582195d6726fa85
+FROM gcr.io/distroless/base-debian12:nonroot@sha256:8b9f2e503e55aff85b79d6b22c7a63a65170e8698ae80de680e3f5ea600977bf
 
 LABEL org.opencontainers.image.source="https://github.com/cloudflare/cloudflared"
 
