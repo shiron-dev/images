@@ -14,3 +14,7 @@ linux/386:
   - linux/386
   - 386
   - i386
+groups:
+  default:
+    - linux/amd64
+    - linux/arm64

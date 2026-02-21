@@ -42,7 +42,7 @@ jobs:
       - name: Get Dockerfiles
         id: get-dockerfiles
         run: |
-          DOCKERFILES=$(find . -maxdepth 1 -name "Dockerfile.*" | sort | jq -Rsc 'split("\n")[0:-1]')
+          DOCKERFILES=$(find . -maxdepth 1 \( -name "Dockerfile" -o -name "Dockerfile.*" \) | sort | jq -Rsc 'split("\n")[0:-1]')
           echo "dockerfiles=$DOCKERFILES" >> "$GITHUB_OUTPUT"
           cat "$GITHUB_OUTPUT"
       - uses: shiron-dev/actions/matrix-output-write@9e2029b6bf55740748a5eace94dc93d97a1496ba # v1.5.2
