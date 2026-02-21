@@ -8,6 +8,10 @@
     "cloudflared": {
       "release-type": "simple",
       "package-name": "cloudflared"
+    },
+    "discord-webhook": {
+      "release-type": "simple",
+      "package-name": "discord-webhook"
     }
   }
 }
