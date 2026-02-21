@@ -81,6 +81,7 @@ jobs:
     runs-on: ${{ contains(matrix.kv.value, 'arm') && 'ubuntu-24.04-arm' || 'ubuntu-24.04' }}
     timeout-minutes: 360
     strategy:
+      fail-fast: false
       matrix:
         kv: ${{ fromJson(needs.docker-read.outputs.result) }}
     name: docker-build ${{ matrix.kv.key }} (${{ matrix.kv.value }})
