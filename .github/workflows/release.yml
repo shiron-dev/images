@@ -135,7 +135,7 @@ jobs:
         id: vars
         run: |
           echo '${{ steps.read.outputs.result }}'
-          echo "result=$(echo '${{ steps.read.outputs.result }}' | jq -c '[{key: "kali-linux", values: (map(.value.digest))}]')" >> "$GITHUB_OUTPUT"
+          echo "result=$(echo '${{ steps.read.outputs.result }}' | jq -c 'sort_by(.key) | group_by(.key) | map({key: .[0].key, values: map(.value.digest)})')" >> "$GITHUB_OUTPUT"
 
   docker-merge:
     needs:
