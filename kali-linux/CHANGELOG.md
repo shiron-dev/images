@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.12](https://github.com/shiron-dev/images/compare/kali-linux-v1.0.11...kali-linux-v1.0.12) (2026-02-22)
+
+
+### Bug Fixes
+
+* **deps:** update kali-linux ([#146](https://github.com/shiron-dev/images/issues/146)) ([05e54c6](https://github.com/shiron-dev/images/commit/05e54c6dad3435c810ba8652841b290630bc6e6f))
+
 ## [1.0.11](https://github.com/shiron-dev/images/compare/kali-linux-v1.0.10...kali-linux-v1.0.11) (2026-02-21)
 
 
