@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.2.2](https://github.com/shiron-dev/images/compare/cloudflared-v1.2.1...cloudflared-v1.2.2) (2026-03-15)
+
+
+### Bug Fixes
+
+* **deps:** update golang docker tag to v1.26.1 ([#160](https://github.com/shiron-dev/images/issues/160)) ([02c603d](https://github.com/shiron-dev/images/commit/02c603df10da5966ed46c061c2c14d58e78cb5bb))
+* **deps:** update golang:1.26.0 docker digest to 9edf713 ([#149](https://github.com/shiron-dev/images/issues/149)) ([b2ef6b1](https://github.com/shiron-dev/images/commit/b2ef6b10e1335d3fa6e94f78f914684b6a409742))
+* **deps:** update golang:1.26.1 docker digest to c7e98cc ([#163](https://github.com/shiron-dev/images/issues/163)) ([700dbc7](https://github.com/shiron-dev/images/commit/700dbc7f699068c4f718ba9a745c24e5f63d0e35))
+
 ## [1.2.1](https://github.com/shiron-dev/images/compare/cloudflared-v1.2.0...cloudflared-v1.2.1) (2026-02-21)
 
 
