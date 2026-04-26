@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.0.3](https://github.com/shiron-dev/images/compare/discord-webhook-v1.0.2...discord-webhook-v1.0.3) (2026-04-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency discord.py to &gt;=2.7.0 ([#150](https://github.com/shiron-dev/images/issues/150)) ([a16db71](https://github.com/shiron-dev/images/commit/a16db71dd469435e5a76e1f3a26e80413235010f))
+* **deps:** update dependency discord.py to &gt;=2.7.1 ([#154](https://github.com/shiron-dev/images/issues/154)) ([5fdf758](https://github.com/shiron-dev/images/commit/5fdf758cdf6d7f33ca0f938f435432b66913c046))
+* **deps:** update dependency requests to &gt;=2.33.0 [security] ([#168](https://github.com/shiron-dev/images/issues/168)) ([141409b](https://github.com/shiron-dev/images/commit/141409b1202b11abc4f762eb66e31a97d3ece96d))
+* **deps:** update dependency requests to &gt;=2.33.1 ([#170](https://github.com/shiron-dev/images/issues/170)) ([ba29218](https://github.com/shiron-dev/images/commit/ba29218d26b6afcaacb9e78317d163214bd807dc))
+
 ## [1.0.2](https://github.com/shiron-dev/images/compare/discord-webhook-v1.0.1...discord-webhook-v1.0.2) (2026-02-21)
 
 
