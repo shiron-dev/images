@@ -1,0 +1,44 @@
+FROM ubuntu:24.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends \
+    ca-certificates \
+    curl \
+    wget \
+    git \
+    vim \
+    nano \
+    tmux \
+    less \
+    jq \
+    yq \
+    unzip \
+    zip \
+    tar \
+    gzip \
+    bzip2 \
+    xz-utils \
+    net-tools \
+    iproute2 \
+    iputils-ping \
+    dnsutils \
+    traceroute \
+    tcpdump \
+    nmap \
+    whois \
+    openssh-client \
+    socat \
+    netcat-openbsd \
+    python3 \
+    python3-pip \
+    python3-venv \
+    build-essential \
+    file \
+    strace \
+    ltrace \
+    gdb \
+  && rm -rf /var/lib/apt/lists/*
+
+CMD ["/bin/bash"]
