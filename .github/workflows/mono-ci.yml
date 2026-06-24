@@ -55,7 +55,7 @@ jobs:
           DOCKERFILES=$(find . -maxdepth 1 \( -name "Dockerfile" -o -name "Dockerfile.*" \) | sort | jq -Rsc 'split("\n")[0:-1]')
           echo "dockerfiles=$DOCKERFILES" >> "$GITHUB_OUTPUT"
           cat "$GITHUB_OUTPUT"
-      - uses: shiron-dev/actions/matrix-output-write@84397408739dd8be5cab53d443ae764501063dab # v1.6.4
+      - uses: shiron-dev/actions/matrix-output-write@8780bd20d1ef046844aa1a1c2e9d96fefaa1384b # v1.7.0
         with:
           matrix-step-name: release
           matrix-key: ${{ matrix.changed_dir }}
@@ -68,7 +68,7 @@ jobs:
     outputs:
       result: ${{ steps.vars.outputs.result }}
     steps:
-      - uses: shiron-dev/actions/matrix-output-read@84397408739dd8be5cab53d443ae764501063dab # v1.6.4
+      - uses: shiron-dev/actions/matrix-output-read@8780bd20d1ef046844aa1a1c2e9d96fefaa1384b # v1.7.0
         id: read
         with:
           matrix-step-name: release
