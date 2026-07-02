@@ -11,7 +11,7 @@ jobs:
       changed_dirs: ${{ steps.changed-dirs.outputs.changed_dirs }}
       changed: ${{ steps.changed-dirs.outputs.changed }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
         with:
           fetch-depth: 0
       - name: Get changed directories
@@ -48,7 +48,7 @@ jobs:
         working-directory: ${{ matrix.changed_dir }}
     if: ${{ needs.detect-changes.outputs.changed == 'true' }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
       - name: Get Dockerfiles
         id: get-dockerfiles
         run: |
@@ -86,7 +86,7 @@ jobs:
         kv: ${{ fromJson(needs.docker-read.outputs.result) }}
     name: docker-build ${{ matrix.kv.key }} (${{ matrix.kv.value }})
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
       - name: Set outputs
         id: vars
         run: |
