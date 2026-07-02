@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.0.12](https://github.com/shiron-dev/images/compare/kali-linux-v1.0.11...kali-linux-v1.0.12) (2026-07-02)
+
+
+### Bug Fixes
+
+* **deps:** update kali-linux ([#146](https://github.com/shiron-dev/images/issues/146)) ([05e54c6](https://github.com/shiron-dev/images/commit/05e54c6dad3435c810ba8652841b290630bc6e6f))
+* **deps:** update kali-linux ([#152](https://github.com/shiron-dev/images/issues/152)) ([3619593](https://github.com/shiron-dev/images/commit/3619593c7d4ab761f1e1e09803206cb7cb051db3))
+* **deps:** update kali-linux ([#157](https://github.com/shiron-dev/images/issues/157)) ([7480d87](https://github.com/shiron-dev/images/commit/7480d873b53f0473aea09f60fdad69b9d3420272))
+* **deps:** update kali-linux ([#164](https://github.com/shiron-dev/images/issues/164)) ([dca6cb4](https://github.com/shiron-dev/images/commit/dca6cb49d4b38d0fc42ad37680fcb4f2b8f5c8d0))
+* **deps:** update kali-linux ([#167](https://github.com/shiron-dev/images/issues/167)) ([9f8e73b](https://github.com/shiron-dev/images/commit/9f8e73ba7d36aff323126339b2e38d161169a30f))
+* **deps:** update kali-linux ([#169](https://github.com/shiron-dev/images/issues/169)) ([70c17a3](https://github.com/shiron-dev/images/commit/70c17a3ab1a48b1299c10717007622e4dcfabf1c))
+* **deps:** update kali-linux ([#172](https://github.com/shiron-dev/images/issues/172)) ([1e8de40](https://github.com/shiron-dev/images/commit/1e8de40f5a03f1ef49a024165e65ebdfe2e88243))
+* **deps:** update kali-linux ([#175](https://github.com/shiron-dev/images/issues/175)) ([1ca720d](https://github.com/shiron-dev/images/commit/1ca720d333b73be600a5b0eb1ad3137a4475f41f))
+* **deps:** update kali-linux ([#178](https://github.com/shiron-dev/images/issues/178)) ([15937a2](https://github.com/shiron-dev/images/commit/15937a25deb052cb8be0483cd8a989806764605d))
+* **deps:** update kali-linux ([#180](https://github.com/shiron-dev/images/issues/180)) ([22eed3f](https://github.com/shiron-dev/images/commit/22eed3f17464fce09ebcc4a1f2f5ea5345cdb286))
+* **deps:** update kali-linux ([#181](https://github.com/shiron-dev/images/issues/181)) ([fda79f9](https://github.com/shiron-dev/images/commit/fda79f9fcf32f2f91ab32133bdd7418c619f4f93))
+* **deps:** update kali-linux ([#182](https://github.com/shiron-dev/images/issues/182)) ([71f2b1d](https://github.com/shiron-dev/images/commit/71f2b1dbecb4bd4ce1d51528d77ace23465955a1))
+* **deps:** update kali-linux ([#186](https://github.com/shiron-dev/images/issues/186)) ([04a8915](https://github.com/shiron-dev/images/commit/04a8915d07fcf0e3c3cd54df72aec919a2ff83f3))
+* **deps:** update kali-linux ([#187](https://github.com/shiron-dev/images/issues/187)) ([5e8d9eb](https://github.com/shiron-dev/images/commit/5e8d9ebea40eab2275a68b15b874702ce19cb63e))
+* **deps:** update kali-linux ([#190](https://github.com/shiron-dev/images/issues/190)) ([1100625](https://github.com/shiron-dev/images/commit/1100625c5eea9cd122c8c19eb0f30b5662aca31f))
+* **deps:** update kali-linux ([#194](https://github.com/shiron-dev/images/issues/194)) ([eb1134d](https://github.com/shiron-dev/images/commit/eb1134da78b2ee35b291e232808a310e5d41f18b))
+* **deps:** update kali-linux ([#197](https://github.com/shiron-dev/images/issues/197)) ([c4a7078](https://github.com/shiron-dev/images/commit/c4a707898917a732f05b0aece15334a74d97bad2))
+* **deps:** update kali-linux ([#201](https://github.com/shiron-dev/images/issues/201)) ([bf549aa](https://github.com/shiron-dev/images/commit/bf549aa1b84e555d39825cb43f4f76424210d820))
+
 ## [1.0.11](https://github.com/shiron-dev/images/compare/kali-linux-v1.0.10...kali-linux-v1.0.11) (2026-02-21)
 
 
