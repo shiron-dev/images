@@ -12,6 +12,10 @@
     "discord-webhook": {
       "release-type": "simple",
       "package-name": "discord-webhook"
+    },
+    "ubuntu-tools": {
+      "release-type": "simple",
+      "package-name": "ubuntu-tools"
     }
   }
 }
